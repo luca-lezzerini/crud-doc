@@ -6,8 +6,14 @@
 package cruddoc.ui;
 
 import cruddoc.AddEvent;
+import cruddoc.AnnullaEvent;
 import cruddoc.AutomaCrud;
+import cruddoc.ConfermaEvent;
 import cruddoc.Crudabile;
+import cruddoc.ModificaEvent;
+import cruddoc.RicercaEvent;
+import cruddoc.RimuoviEvent;
+import cruddoc.SelezionaEvent;
 
 /**
  *
@@ -77,9 +83,9 @@ public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
     @Override
     public void entraRimuovi() {
         jTextField1.setVisible(true);
-        jTextField1.setEnabled(true);
+        jTextField1.setEnabled(false);
         jTextField2.setVisible(true);
-        jTextField2.setEnabled(true);
+        jTextField2.setEnabled(false);
         jButtonAnnulla.setVisible(true);
         jButtonConferma.setVisible(true);
         jButtonModifica.setVisible(false);
@@ -137,12 +143,32 @@ public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
         jTextField2.setText("jTextField2");
 
         jButtonModifica.setText("Modifica");
+        jButtonModifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificaActionPerformed(evt);
+            }
+        });
 
         jButtonRimuovi.setText("Rimuovi");
+        jButtonRimuovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRimuoviActionPerformed(evt);
+            }
+        });
 
         jButtonConferma.setText("Conferma");
+        jButtonConferma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfermaActionPerformed(evt);
+            }
+        });
 
         jButtonAnnulla.setText("Annulla");
+        jButtonAnnulla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnullaActionPerformed(evt);
+            }
+        });
 
         jButtonNuova.setText("Nuova");
         jButtonNuova.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +180,11 @@ public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
         jTextFieldSearch.setText("jTextField3");
 
         jButtonCerca.setText("Cerca");
+        jButtonCerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCercaActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,6 +200,11 @@ public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
         jScrollPane1.setViewportView(jTable1);
 
         jButtonSeleziona.setText("Seleziona");
+        jButtonSeleziona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelezionaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -236,6 +272,30 @@ public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
     private void jButtonNuovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuovaActionPerformed
         automa.next(new AddEvent());
     }//GEN-LAST:event_jButtonNuovaActionPerformed
+
+    private void jButtonModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificaActionPerformed
+        automa.next(new ModificaEvent());
+    }//GEN-LAST:event_jButtonModificaActionPerformed
+
+    private void jButtonRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRimuoviActionPerformed
+        automa.next(new RimuoviEvent());
+    }//GEN-LAST:event_jButtonRimuoviActionPerformed
+
+    private void jButtonConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfermaActionPerformed
+        automa.next(new ConfermaEvent());
+    }//GEN-LAST:event_jButtonConfermaActionPerformed
+
+    private void jButtonAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnullaActionPerformed
+        automa.next(new AnnullaEvent());
+    }//GEN-LAST:event_jButtonAnnullaActionPerformed
+
+    private void jButtonCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCercaActionPerformed
+        automa.next(new RicercaEvent());
+    }//GEN-LAST:event_jButtonCercaActionPerformed
+
+    private void jButtonSelezionaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelezionaActionPerformed
+        automa.next(new SelezionaEvent());
+    }//GEN-LAST:event_jButtonSelezionaActionPerformed
 
     /**
      * @param args the command line arguments
