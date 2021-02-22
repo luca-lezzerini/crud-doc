@@ -5,17 +5,107 @@
  */
 package cruddoc.ui;
 
+import cruddoc.AddEvent;
+import cruddoc.AutomaCrud;
+import cruddoc.Crudabile;
+
 /**
  *
  * @author Luca Lezzerini
  */
-public class CrudJFrame extends javax.swing.JFrame {
+public class CrudJFrame extends javax.swing.JFrame implements Crudabile {
+
+    AutomaCrud automa;
 
     /**
      * Creates new form CrudJFrame
      */
     public CrudJFrame() {
         initComponents();
+        automa = new AutomaCrud(this);
+    }
+
+    @Override
+    public void entraRicerca() {
+        jTextField1.setVisible(false);
+        jTextField2.setVisible(false);
+        jButtonAnnulla.setVisible(false);
+        jButtonConferma.setVisible(false);
+        jButtonModifica.setVisible(false);
+        jButtonRimuovi.setVisible(false);
+        jButtonSeleziona.setVisible(true);
+        jButtonNuova.setVisible(true);
+        jButtonCerca.setVisible(true);
+        jTextFieldSearch.setVisible(true);
+        jTable1.setVisible(true);
+    }
+
+    @Override
+    public void entraVisualizza() {
+        jTextField1.setVisible(true);
+        jTextField1.setEnabled(false);
+        jTextField2.setVisible(true);
+        jTextField2.setEnabled(false);
+        jButtonAnnulla.setVisible(false);
+        jButtonConferma.setVisible(false);
+        jButtonModifica.setVisible(true);
+        jButtonRimuovi.setVisible(true);
+        jButtonSeleziona.setVisible(true);
+        jButtonNuova.setVisible(true);
+        jButtonCerca.setVisible(true);
+        jTextFieldSearch.setVisible(true);
+        jTable1.setVisible(true);
+    }
+
+    @Override
+    public void entraModifica() {
+        jTextField1.setVisible(true);
+        jTextField1.setEnabled(true);
+        jTextField2.setVisible(true);
+        jTextField2.setEnabled(true);
+        jButtonAnnulla.setVisible(true);
+        jButtonConferma.setVisible(true);
+        jButtonModifica.setVisible(false);
+        jButtonRimuovi.setVisible(false);
+        jButtonSeleziona.setVisible(false);
+        jButtonNuova.setVisible(false);
+        jButtonCerca.setVisible(false);
+        jTextFieldSearch.setVisible(false);
+        jTable1.setVisible(false);
+    }
+
+    @Override
+    public void entraRimuovi() {
+        jTextField1.setVisible(true);
+        jTextField1.setEnabled(true);
+        jTextField2.setVisible(true);
+        jTextField2.setEnabled(true);
+        jButtonAnnulla.setVisible(true);
+        jButtonConferma.setVisible(true);
+        jButtonModifica.setVisible(false);
+        jButtonRimuovi.setVisible(false);
+        jButtonSeleziona.setVisible(false);
+        jButtonNuova.setVisible(false);
+        jButtonCerca.setVisible(false);
+        jTextFieldSearch.setVisible(false);
+        jTable1.setVisible(false);
+    }
+
+    @Override
+    public void entraAggiungi() {
+        jTextField1.setVisible(true);
+        jTextField1.setEnabled(true);
+        jTextField2.setVisible(true);
+        jTextField2.setEnabled(true);
+        jButtonAnnulla.setVisible(true);
+        jButtonConferma.setVisible(true);
+        jButtonModifica.setVisible(false);
+        jButtonRimuovi.setVisible(false);
+        jButtonSeleziona.setVisible(false);
+        jButtonNuova.setVisible(false);
+        jButtonCerca.setVisible(false);
+        jTextFieldSearch.setVisible(false);
+        jTable1.setVisible(false);
     }
 
     /**
@@ -55,6 +145,11 @@ public class CrudJFrame extends javax.swing.JFrame {
         jButtonAnnulla.setText("Annulla");
 
         jButtonNuova.setText("Nuova");
+        jButtonNuova.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuovaActionPerformed(evt);
+            }
+        });
 
         jTextFieldSearch.setText("jTextField3");
 
@@ -137,6 +232,10 @@ public class CrudJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonNuovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuovaActionPerformed
+        automa.next(new AddEvent());
+    }//GEN-LAST:event_jButtonNuovaActionPerformed
 
     /**
      * @param args the command line arguments
